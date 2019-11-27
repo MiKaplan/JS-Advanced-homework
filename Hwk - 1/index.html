@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="list">
+        <li>List</li>
+        <li>List</li>
+        <li>List</li>
+    </ul>
+    <input type="button" name="btn" value="Выбрать первый элемент" onclick="chooseFirstElem()">
+    <input type="button" name="btn" value="Выбрать последний элемент" onclick="chooseLastElem()">
+    <input type="button" name="btn" value="Выбрать следующий элемент" onclick="nextElem()">
+    <input type="button" name="btn" value="Выбрать предыдущий элемент" onclick="previousElem()">
+    <input type="button" name="btn" value="Добавить" onclick="createElem()">
+    <input type="button" name="btn" value="Удалить элемент" onclick="deleteElem()">
+    <input type="button" name="btn" value="Добавить в начало" onclick="createFirstElem()">
+
+    <script>
+        var list = document.getElementById("list");
+        let li = document.getElementsByTagName("li");
+
+        function chooseFirstElem() {
+            for (let i = 0; i < li.length; i++) {
+                li[i].style.color = "black";
+                li[0].style.color = "green";
+            }
+        }
+
+        function chooseLastElem() {
+            for (let i = 0; i < li.length; i++) {
+                li[i].style.color = "black";
+                li[li.length -1].style.color = "green";
+            }
+        }
+
+        function nextElem() {
+            for (let i = 0; i < list.children.length; i++) {
+                if (i+1 < list.children.length) {
+                    if (list.children[i].style.color === "green") {
+                        var next = list.children[i].nextElementSibling;
+                        next.style.color = "green";
+                        list.children[i].style.color = "black";
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        function previousElem() {
+            for (let i = 0; i < list.children.length; i++) {
+                if (i-1 >= 0) {
+                    if (list.children[i].style.color === "green") {
+                        var next = list.children[i].previousElementSibling;
+                        next.style.color = "green";
+                        list.children[i].style.color = "black";
+                        break;
+                    }
+                }
+
+            }
+        }
+        
+        function deleteElem() {
+                    var del = list.lastElementChild;
+                    if (list.children.length > 0) {
+                        list.removeChild(del);
+                    }
+
+
+        }
+        function createElem() {
+            let newElem = document.createElement("li");
+            newElem.innerHTML = "New list";
+            list.appendChild(newElem);
+        }
+
+        function createFirstElem() {
+            let newElem = document.createElement("li");
+            newElem.innerHTML = "New list";
+            var first = list.firstChild;
+            list.insertBefore(newElem, first);
+        }
+
+    </script>
+</body>
+</html>
