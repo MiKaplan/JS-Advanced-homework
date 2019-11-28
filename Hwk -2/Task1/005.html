@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <style>-->
+<!--        a[target] {-->
+<!--            background-color: yellow;-->
+<!--        }-->
+<!--        a[target='_blank'] {-->
+<!--            background-color: red;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+    <a href="#" target="_top">w3schools.com</a>
+    <a href="http://www.google.com" target="_blank">google.com</a>
+    <a href="http://www.wikipedia.org" target="_self">wikipedia.org</a>
+    <a href="#">Someting</a>
+
+    <script>
+        for (let i = 0; i < document.querySelectorAll("a[target]").length; i++) {
+            document.querySelectorAll("a[target]")[i].style.backgroundColor = "yellow";
+        }
+        document.querySelector("a[target='_blank']").style.backgroundColor = "red";
+
+    </script>
+</body>
+</html>

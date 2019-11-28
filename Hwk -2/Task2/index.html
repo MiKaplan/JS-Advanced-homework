@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="one">one</div>
+
+<script>
+
+    var divOne = document.querySelector("#one");
+    divOne.insertAdjacentHTML("afterEnd", "<div id=\"two\">two</div>");
+
+    var divTwo = document.querySelector("#two");
+    divTwo.onclick = function () {
+        divTwo.insertAdjacentHTML("beforeBegin", "<div id=\"two_first\">two first</div>");
+        divTwo.id = "two_second";
+        divTwo.textContent = "two second";
+        document.getElementById("two_first").style.cssText = "width: 200px; height: 200px; border: 1px solid #000; margin-bottom: 10px";
+    };
+
+    for (let i = 0; i < document.querySelectorAll("div").length; i++) {
+        document.querySelectorAll("div")[i].style.cssText = "width: 200px; height: 200px; border: 1px solid #000; margin-bottom: 10px";
+    }
+</script>
+</body>
+</html>
