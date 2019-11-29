@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input class="phrase" type="text" placeholder="Enter some phrase">
+<input class="btn" type="button" value="Submit">
+<script>
+    let userPhrase = document.querySelector(".phrase");
+    let btn = document.querySelector(".btn");
+
+    btn.onclick =function() {
+        let wordsArray = userPhrase.value.split(" ");
+        if (wordsArray.length < 3) {
+            alert("Enter more words (>3)");
+            userPhrase.value = "";
+            return;
+        }
+        let ul = document.createElement("ul");
+        document.body.appendChild(ul);
+
+        let letterA = 0;
+
+        for (let i = 0; i < wordsArray.length; i++) {
+
+            for (let j = 0; j < wordsArray[i].length; j++) {
+                if (wordsArray[i].charAt(j) === "a"){
+                    letterA++;
+                }
+            }
+            let li = document.createElement("li");
+            wordsArray[0] = wordsArray[0].toUpperCase();
+            wordsArray[wordsArray.length -1] = wordsArray[wordsArray.length -1].toLowerCase();
+            wordsArray[wordsArray.length -2] = wordsArray[wordsArray.length -2].toLowerCase();
+            li.innerHTML = wordsArray[i];
+            ul.appendChild(li);
+        }
+        userPhrase.value = "";
+        alert(letterA);
+    };
+
+
+</script>
+</body>
+</html>

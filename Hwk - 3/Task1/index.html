@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="counter1"></div>
+    <input class="startFirst" type="button" value="Запустить">
+    <input class="stopFirst" type="button" value="Остановить">
+    <input class="resetFirst" type="button" value="Обнулить">
+
+    <div id="counter2"></div>
+    <input class="startSecond" type="button" value="Запустить">
+    <input class="stopSecond" type="button" value="Остановить">
+    <input class="resetSecond" type="button" value="Обнулить">
+
+
+    <script>
+        let secondsCounterFirst = document.querySelector("#counter1");
+        let secondsCounterSecond = document.querySelector("#counter2");
+
+        let startFirst = document.querySelector(".startFirst");
+        let startSecond = document.querySelector(".startSecond");
+
+        let stopFirst = document.querySelector(".stopFirst");
+        let stopSecond = document.querySelector(".stopSecond");
+
+        let resetFirst = document.querySelector(".resetFirst");
+        let resetSecond = document.querySelector(".resetSecond");
+
+        let countFirst = 1;
+        let countSecond = 30;
+
+        secondsCounterFirst.innerHTML = countFirst;
+        secondsCounterSecond.innerHTML = countSecond;
+
+        let timerFirst;
+        let timerSecond;
+
+        let countFirstCanRunning = true;
+        let countSecondCanRunning = true;
+
+        function startCounterFirst() {
+            countFirst++;
+            secondsCounterFirst.innerHTML = countFirst;
+            if (countFirst === 30) {
+                clearInterval(timerFirst);
+            }
+        }
+
+        function startCounterSecond() {
+            countSecond--;
+            secondsCounterSecond.innerHTML = countSecond;
+            if (countSecond === 1) {
+                clearInterval(timerSecond);
+            }
+        }
+
+        startFirst.onclick = function () {
+            if (countFirstCanRunning) {
+                timerFirst = setInterval(startCounterFirst, 1000);
+                countFirstCanRunning = false;
+            } else {
+                alert("The counter is already running");
+            }
+        };
+
+        startSecond.onclick = function () {
+            if (countSecondCanRunning) {
+                timerSecond = setInterval(startCounterSecond, 1000);
+                countSecondCanRunning = false;
+            } else {
+                alert("The counter is already running");
+            }
+        };
+
+        stopFirst.onclick = function () {
+            clearInterval(timerFirst);
+            countFirstCanRunning = true;
+        };
+
+        stopSecond.onclick = function () {
+            clearInterval(timerSecond);
+            countSecondCanRunning = true;
+        };
+
+        resetFirst.onclick = function () {
+            clearInterval(timerFirst);
+            countFirstCanRunning = true;
+            countFirst = 1;
+            secondsCounterFirst.innerHTML = countFirst;
+        };
+
+        resetSecond.onclick = function () {
+            clearInterval(timerSecond);
+            countSecondCanRunning = true;
+            countSecond = 30;
+            secondsCounterSecond.innerHTML = countSecond;
+        }
+
+    </script>
+</body>
+</html>

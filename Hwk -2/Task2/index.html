@@ -13,6 +13,7 @@
     divOne.insertAdjacentHTML("afterEnd", "<div id=\"two\">two</div>");
 
     var divTwo = document.querySelector("#two");
+
     divTwo.onclick = function () {
         divTwo.insertAdjacentHTML("beforeBegin", "<div id=\"two_first\">two first</div>");
         divTwo.id = "two_second";
