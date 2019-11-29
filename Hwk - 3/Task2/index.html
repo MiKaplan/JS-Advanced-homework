@@ -5,14 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<input class="phrase" type="text" placeholder="Enter some phrase">
-<input class="btn" type="button" value="Submit">
+<label>
+    <input class="phrase" type="text" placeholder="Enter some phrase">
+    <input class="btn" type="button" value="Submit">
+</label>
+
 <script>
     let userPhrase = document.querySelector(".phrase");
     let btn = document.querySelector(".btn");
 
     btn.onclick =function() {
         let wordsArray = userPhrase.value.split(" ");
+        //решил ошибку с малым количеством слов в фразе
         if (wordsArray.length < 3) {
             alert("Enter more words (>3)");
             userPhrase.value = "";
@@ -26,7 +30,8 @@
         for (let i = 0; i < wordsArray.length; i++) {
 
             for (let j = 0; j < wordsArray[i].length; j++) {
-                if (wordsArray[i].charAt(j) === "a"){
+                //реагирует на английскую и русскую "а" в любом регистре
+                if (wordsArray[i].charAt(j).toLowerCase() === "a" || wordsArray[i].charAt(j).toLowerCase() === "а"){
                     letterA++;
                 }
             }
