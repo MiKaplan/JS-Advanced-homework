@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            background-color:green;
+            height: 150px;
+            width: 150px;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var divArr = document.getElementsByTagName("div");
+            function randomColor() {
+                function randomNum() {
+                    return Math.floor(Math.random() * 256);
+                }
+                return "rgb(" + randomNum() + ", " + randomNum() + ", " + randomNum() + ")";
+            }
+            for (let i = 0; i < divArr.length; i++) {
+                divArr[i].onmouseenter = function () {
+                    let divColor = this;
+                    function changeColor() {
+                        let color = randomColor();
+                        let canChangeColor = false;
+                        for (let j = 0; j < divArr.length; j++) {
+                            if (color !== divArr[j].style.background) {
+                                canChangeColor = true;
+                            } else {
+                                canChangeColor = false;
+                                break;
+                            }
+                        }
+                        if (canChangeColor) {
+                            divColor.style.background = color;
+                            divColor.innerHTML = randomColor();
+                        } else {
+                            changeColor();
+                        }
+                    }
+                    changeColor();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

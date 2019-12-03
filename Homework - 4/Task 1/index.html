@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 200px;
+        }
+
+        input[type="button"] {
+            width: 100px;
+            background-color: blue;
+            color: white;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            var index = document.querySelector(".index");
+            var indexBtn = document.querySelector(".index_btn");
+            var indexDiv = document.querySelector("#index");
+            indexBtn.onclick = checkIndex;
+
+            function checkIndex() {
+                let checker = /^\d{5}$/;
+                if (checker.test(index.value)) {
+                    let p = document.createElement("p");
+                    indexDiv.appendChild(p).innerHTML = index.value + " - " + true;
+                } else if (index.value === "" || index.value === null) {
+                    alert("Enter value");
+                } else {
+                    let p = document.createElement("p");
+                    indexDiv.appendChild(p).innerHTML = index.value + " - " + false;
+                }
+            }
+
+            var ip = document.querySelector(".ip");
+            var ipBtn = document.querySelector(".ip_btn");
+            var ipDiv = document.querySelector("#ip");
+            ipBtn.onclick = checkIp;
+
+            function checkIp() {
+                let checker = /^\d{3}\.\d{3}\.\d{3}\.\d{3}$/;
+                if (checker.test(ip.value)) {
+                    let p = document.createElement("p");
+                    ipDiv.appendChild(p).innerHTML = ip.value + " - " + true;
+                } else if (ip.value === "" || ip.value === null) {
+                    alert("Enter value");
+                } else {
+                    let p = document.createElement("p");
+                    ipDiv.appendChild(p).innerHTML = ip.value + " - " + false;
+                }
+            }
+
+            var dollar = document.querySelector(".dollar");
+            var dollarBtn = document.querySelector(".dollar_btn");
+            var dollarDiv = document.querySelector("#dollar");
+            dollarBtn.onclick = checkDollar;
+
+            function checkDollar() {
+                let checker = /^\$\d+$|^\$\d+\.\d{2}$/;
+                if (checker.test(dollar.value)) {
+                    let p = document.createElement("p");
+                    dollarDiv.appendChild(p).innerHTML = dollar.value + " - " + true;
+                } else if (dollar.value === "" || dollar.value === null) {
+                    alert("Enter value");
+                } else {
+                    let p = document.createElement("p");
+                    dollarDiv.appendChild(p).innerHTML = dollar.value + " - " + false;
+                }
+            }
+
+            var date = document.querySelector(".date");
+            var dateBtn = document.querySelector(".date_btn");
+            var dateDiv = document.querySelector("#date");
+            dateBtn.onclick = checkDate;
+
+            function checkDate() {
+                let checker = /^\d{2}\/\d{2}\/\d{4}$/;
+                if (checker.test(date.value)) {
+                    let p = document.createElement("p");
+                    dateDiv.appendChild(p).innerHTML = date.value + " - " + true;
+                } else if (date.value === "" || date.value === null) {
+                    alert("Enter value");
+                } else {
+                    let p = document.createElement("p");
+                    dateDiv.appendChild(p).innerHTML = date.value + " - " + false;
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="index">
+    <input class="index" type="text" placeholder="Enter index (5 numbers)">
+    <input class="index_btn" type="button" value="Submit">
+</div>
+
+<div id="ip">
+    <input class="ip" type="text" placeholder="Enter ip-address (xxx.xxx.xxx.xxx)">
+    <input class="ip_btn" type="button" value="Submit">
+</div>
+
+<div id="dollar">
+    <input class="dollar" type="text" placeholder="Enter price in dollars ($x/$x.xx)">
+    <input class="dollar_btn" type="button" value="Submit">
+</div>
+
+<div id="date">
+    <input class="date" type="text" placeholder="Enter date (xx/xx/xxxx)">
+    <input class="date_btn" type="button" value="Submit">
+</div>
+</body>
+</html>
