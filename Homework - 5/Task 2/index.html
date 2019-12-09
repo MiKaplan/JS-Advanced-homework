@@ -4,7 +4,80 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    .div {
+        border: 1px solid red;
+        width: 250px;
+        height: 20px;
+        margin-bottom: 10px;
+    }
+    .hidden {
+        visibility: hidden;
+    }
+    #p {
+        margin-left: 0;
+    }
+</style>
+<script>
+    window.onload = function () {
+        var div = document.querySelector("#div");
+        if (div) {
+            div.addEventListener("click", deleteItem);
+            function deleteItem(e) {
+                let target = e.target;
+                if (target.tagName === "BUTTON") {
+                   div.removeChild(target.parentNode);
+                }
+            }
+        }
+        var mainDiv = document.getElementById("main-div");
+        var hint = document.getElementById("p");
+        mainDiv.onmouseover = function(e) {
+            let target = e && e.target || window.event.srcElement;
+            let dataToggleId = target.getAttribute('data-tooltip');
+            if (!dataToggleId) {
+                return
+            }
+            let p = mainDiv.insertAdjacentElement("afterend", hint);
+                p.style.marginLeft = String(target.getBoundingClientRect().left - 8) + "px";
+                p.style.border = "1px solid grey";
+                p.style.width = String(target.getBoundingClientRect().width) + "px";
+            hint.classList.remove("hidden");
+            hint.innerHTML = dataToggleId;
+        };
+        mainDiv.onmouseout = function () {
+            hint.classList.add("hidden");
+        }
+    }
+</script>
 <body>
-
+<div id="div">
+    <div class="div">
+        Lorem ipsum dolor sit amet.
+        <button class="btn">Delete</button>
+    </div>
+    <div class="div">
+        Lorem ipsum dolor sit amet.
+        <button class="btn">Delete</button>
+    </div>
+    <div class="div">
+        Lorem ipsum dolor sit amet.
+        <button class="btn">Delete</button>
+    </div>
+    <div class="div">
+        Lorem ipsum dolor sit amet.
+        <button class="btn">Delete</button>
+    </div>
+    <div class="div">
+        Lorem ipsum dolor sit amet.
+        <button class="btn">Delete</button>
+    </div>
+</div>
+<div id="main-div">
+    <span data-tooltip="наведите">наведите</span>
+    <span data-tooltip="для">для</span>
+    <span data-tooltip="подсказки">подсказки</span>
+    <p id="p" class="hidden">Подсказка</p>
+</div>
 </body>
 </html>
