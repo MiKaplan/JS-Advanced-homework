@@ -3,33 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        .div {
-            visibility: hidden;
-            height: 20px;
-        }
-    </style>
     <script>
         window.onload = function() {
             let link = document.querySelector(".link");
             let div = document.querySelector(".div");
             let btn = document.querySelector(".btn");
 
-            if (link) {
+
                 link.addEventListener("click", getVisible);
+                div.style.visibility = "hidden";
 
                 function getVisible(e) {
                     if (div.style.visibility === "hidden") {
-                        div.style.visibility = "visible";
                         e.preventDefault();
+                        div.style.visibility = "visible";
+
                         return false;
                     } else {
-                        div.style.visibility = "hidden";
                         e.preventDefault();
+                        div.style.visibility = "hidden";
+
                         return false;
                     }
                 }
-            }
+
             if (btn) {
                 btn.addEventListener("click", removeLinkClick);
 
@@ -42,7 +39,7 @@
     </script>
 </head>
 <body>
-<a class="link" href="#">
+<a class="link" href="#" >
     Ссылка
     <div class="div">Lorem ipsum dolor sit amet.</div>
 </a>
