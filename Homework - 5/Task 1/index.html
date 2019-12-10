@@ -7,13 +7,14 @@
         window.onload = function() {
             let link = document.querySelector(".link");
             let div = document.querySelector(".div");
-            let btn = document.querySelector(".btn");
+            let btn1 = document.querySelector(".btn1");
+            let btn2 = document.querySelector(".btn2");
 
 
-                link.addEventListener("click", getVisible);
+                link.addEventListener("click", setVisible);
                 div.style.visibility = "hidden";
 
-                function getVisible(e) {
+                function setVisible(e) {
                     if (div.style.visibility === "hidden") {
                         e.preventDefault();
                         div.style.visibility = "visible";
@@ -27,11 +28,18 @@
                     }
                 }
 
-            if (btn) {
-                btn.addEventListener("click", removeLinkClick);
+            if (btn1) {
+                btn1.addEventListener("click", removeLinkClick);
 
                 function removeLinkClick() {
-                    link.removeEventListener("click", getVisible);
+                    link.removeEventListener("click", setVisible);
+                }
+            }
+            if (btn2) {
+                btn2.addEventListener("click", setVisibleNew);
+
+                function setVisibleNew() {
+                    link.addEventListener("click", setVisible);
                 }
             }
         }
@@ -43,6 +51,7 @@
     Ссылка
     <div class="div">Lorem ipsum dolor sit amet.</div>
 </a>
-<button class="btn">Убрать обработчик</button>
+<button class="btn1">Убрать обработчик</button>
+<button class="btn2"> Добавить обработчик</button>
 </body>
 </html>
