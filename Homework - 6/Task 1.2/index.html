@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            z-index: 2;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let img = document.getElementById("img");
+
+            img.onmousedown = function (e) {
+                img.src = "2.png";
+                let shiftX = e.clientX - img.getBoundingClientRect().left;
+                let shiftY = e.clientY - img.getBoundingClientRect().top;
+
+                function mouseAt(clientX, clientY) {
+                    img.style.left = clientX - shiftX + "px";
+                    img.style.top = clientY - shiftY + "px";
+                }
+                mouseAt(e.clientX, e.clientY);
+
+                document.addEventListener("mousemove", mouseMove);
+                function mouseMove(e) {
+                    mouseAt(e.clientX, e.clientY);
+                }
+
+                img.onmouseup = function () {
+                    document.removeEventListener("mousemove", mouseMove);
+                    img.src = "1.png";
+                    img.onmouseup = null;
+                }
+            };
+
+            img.ondragstart = function () {
+                return false;
+            }
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+<img id="img" src="1.png" alt="smile-1">
+</body>
+</html>

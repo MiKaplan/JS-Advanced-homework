@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #car {
+            position: relative;
+            /*width: 200px;*/
+            height: 100px;
+            margin-top: 20px;
+            /*left: 300px;*/
+
+        }
+
+        hr {
+            margin: 0;
+        }
+
+        #click {
+            position: absolute;
+            font-size: 40px;
+            top: 300px;
+            left: 50%;
+            margin-left: -173px;
+        }
+
+        #error {
+            color: red;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        #start {
+            padding: 0;
+            margin-top: 50px;
+            margin-left: 200px;
+            width: 230px;
+            height: 300px;
+
+
+        }
+
+        img {
+            margin: 0;
+            width: 230px;
+            height: 300px;
+        }
+
+        #stop {
+            padding: 0;
+            margin-top: 50px;
+            width: 230px;
+            height: 300px;
+            float: right;
+            margin-right: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let car = document.getElementById("car");
+            let startImg = document.getElementById("start");
+            let stopImg = document.getElementById("stop");
+            let error = document.getElementById("error");
+            let click = document.getElementById("click");
+
+            var colors = ["blue", "green", "red"];
+            var nextColor = 0;
+
+            setInterval(function () {
+                click.style.color = colors[nextColor++ % colors.length];
+            }, 500);
+
+            var isReverse = null;
+            var isClick = true;
+
+            var interval;
+
+            car.style.left = "0px";
+            car.style.width = "200px";
+
+            error.style.visibility = "hidden";
+
+
+            startImg.onclick = function () {
+                if (isClick) {
+                    interval = setInterval(moveCar, 20);
+                    isClick = false;
+                } else {
+                    error.style.visibility = "visible";
+                    setTimeout(function () {
+                        error.style.visibility = "hidden";
+                    }, 1000);
+                }
+
+                function moveCar() {
+                    if (parseInt(car.style.left) === 0) {
+                        isReverse = true;
+                    }
+                    if (parseInt(car.style.left) === screen.width - parseInt(car.style.width)) {
+                        isReverse = false;
+                    }
+                    if (isReverse) {
+                        car.src = "1.png";
+                        car.style.left = parseInt(car.style.left) + 10 + "px";
+                    }
+                    if (!isReverse) {
+                        car.src = "2.jpg";
+                        car.style.left = parseInt(car.style.left) - 10 + "px";
+                    }
+                }
+            };
+
+            stopImg.onclick = function () {
+                clearInterval(interval);
+                isClick = true;
+            }
+        }
+    </script>
+</head>
+<body>
+<img id="car" src="1.png" alt="car">
+<hr>
+<button id="start">
+    <img src="start.png" alt="">
+</button>
+<button id="stop">
+    <img src="stop.jpg" alt="">
+</button>
+<p id="click"><=== Click me ===></p>
+<p id="error">Вы уже поехали!</p>
+</body>
+</html>
