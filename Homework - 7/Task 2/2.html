@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Doctor() {
+            this.walk = true;
+            this.eat = true;
+            this.drink = true;
+            this.cure = function () {
+                console.log("I cured a man");
+            };
+            this.show = function () {
+                console.log("Can I walk? - " + this.walk + "\n" + "Can I eat? - " + this.eat + "\n" + "Can I drink? - " + this.drink);
+            };
+        }
+
+        function Dentist() {
+            this.cure = function () {
+                console.log("Treat teeth");
+            }
+        }
+
+        function Surgeon() {
+            this.cure = function () {
+                console.log("Perform operations");
+            }
+        }
+
+        Dentist.prototype = new Doctor();
+        Surgeon.prototype = new Doctor();
+
+        var dentist = new Dentist();
+        var surgeon = new Surgeon();
+
+        dentist.cure();
+        dentist.show();
+
+        surgeon.cure();
+        surgeon.show();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
