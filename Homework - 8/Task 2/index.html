@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .none {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let name = document.querySelector("#name");
+            let btn = document.querySelector("#btn");
+            let nameValue = document.querySelector("#name-value");
+            let logoutBtn = document.querySelector("#logout-btn");
+            let login = document.querySelector("#login");
+            let logout = document.querySelector("#logout");
+
+            logout.classList.add("none");
+
+            btn.addEventListener("click", getLogin);
+
+            function getLogin() {
+                if (name.value === "Admin" || name.value === "admin") {
+                    window.localStorage.setItem("key", name.value);
+                    login.classList.add("none");
+                    nameValue.innerHTML = window.localStorage.getItem("key");
+                    logout.classList.remove("none");
+                } else {
+                    alert("wrong login");
+                    name.value = "";
+                }
+            }
+
+            logoutBtn.addEventListener("click", function () {
+                login.classList.remove("none");
+                logout.classList.add("none");
+                name.value = "";
+            })
+        };
+    </script>
+</head>
+<body>
+<div id="login">
+    <input id="name" type="text" placeholder="Enter your name">
+    <input id="btn" type="button" value="Log in">
+</div>
+<div id="logout">
+    <p><span id="name-value"></span> enter in system</p>
+    <input id="logout-btn" type="button" value="logout">
+</div>
+</body>
+</html>
