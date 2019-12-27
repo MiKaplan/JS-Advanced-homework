@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <title>Star Wars</title>
     <script src="js/script.js"></script>
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/stylesheet.css">
 </head>
 <body>
 <div id="namesList">
-    <h2>Существа вселенной Star Wars</h2>
-    <ul>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-        <li class="userName"></li>
-    </ul>
-    <input id="next" type="button" value="Next">
+    <h2>Creatures of the universe Star Wars</h2>
+    <ul id="list"></ul>
     <input id="back" type="button" value="Back">
+    <input id="next" type="button" value="Next">
+
+</div>
+<div class="table hidden">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Birth Year</th>
+            <th>Gender</th>
+            <th>Films</th>
+            <th>Planet</th>
+            <th>Species</th>
+        </tr>
+        <tr>
+            <td class="userInfo"></td>
+            <td class="userInfo"></td>
+            <td class="userInfo"></td>
+            <td class="userInfo">
+                <ul class="filmsList"></ul>
+            </td>
+            <td class="userInfo"></td>
+            <td class="userInfo"></td>
+        </tr>
+    </table>
+    <input id="backToList" type="button" value="&times;">
 </div>
 </body>
 </html>
